@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>POC - Envio de Planilha</title>
+    <link rel="stylesheet" href="style.css">
+    <script type="module" defer>
+        import { DropArea } from './DropArea.js';
+        import { FileApi } from './FileApi.js';
+
+        const dropArea = new DropArea("drop-area", (files) => {
+            const fileApi = new FileApi(files[0]);
+        });
+    </script>
+</head>
+
+<body>
+    <div id="container">
+
+        <div id="drop-area">
+            <form class="my-form">
+                <p>Envie a planilha clicando no botão abaixo ou arrastando o arquivo para esta região.</p>
+                <input type="file" id="file-selector" multiple accept=".csv">
+                <label class="button" for="fileElem" id="file-label">Selecione o arquivo</label>
+                <span id="file-name" class="file-info"></span>
+                <span id="file-size" class="file-info"></span>
+            </form>
+        </div>
+
+        <div id="progress-bar">
+            <span id="info"></span>
+            <div id="progress"></div>
+        </div>
+    </div>
+</body>
+
+</html>
